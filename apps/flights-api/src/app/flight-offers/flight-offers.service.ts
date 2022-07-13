@@ -1,8 +1,9 @@
+import { Injectable } from '@nestjs/common';
+
 import {
   AmadeusFlightOffersRequest,
   AmadeusFlightOffersResponse,
 } from '@app/shared-types';
-import { Injectable } from '@nestjs/common';
 
 import { amadeusClient } from './amadeus-client';
 
