@@ -3,6 +3,8 @@
   "version": 2,
   "projects": {
     "flights": "apps/flights",
-    "flights-e2e": "apps/flights-e2e"
+    "flights-api": "apps/flights-api",
+    "flights-e2e": "apps/flights-e2e",
+    "shared-types": "libs/shared-types"
   }
 }

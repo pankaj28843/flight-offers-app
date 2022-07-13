@@ -1,7 +1,7 @@
 {
   "projectType": "application",
   "sourceRoot": "apps/flights/src",
-  "prefix": "maersk",
+  "prefix": "app",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
