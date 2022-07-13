@@ -7,7 +7,7 @@ import { Injectable } from '@nestjs/common';
 import { amadeusClient } from './amadeus-client';
 
 @Injectable()
-export class AppService {
+export class FlightOffersService {
   getData(): Promise<AmadeusFlightOffersResponse> {
     const requestDetails: AmadeusFlightOffersRequest = {
       currencyCode: 'INR',

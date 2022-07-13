@@ -61,7 +61,8 @@
           "browserTarget": "flights-app:build:production"
         },
         "development": {
-          "browserTarget": "flights-app:build:development"
+          "browserTarget": "flights-app:build:development",
+          "proxyConfig": "apps/flights-app/proxy.conf.json"
         }
       },
       "defaultConfiguration": "development"
