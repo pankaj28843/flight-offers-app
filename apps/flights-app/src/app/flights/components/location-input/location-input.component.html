@@ -1,0 +1,15 @@
+<mat-form-field class="" appearance="fill">
+  <mat-label>{{ placeholder }}</mat-label>
+  <input
+    type="text"
+    [placeholder]="placeholder"
+    matInput
+    [formControl]="control"
+    [matAutocomplete]="auto"
+  />
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="formatAirport">
+    <mat-option *ngFor="let airport of airports" [value]="airport">
+      {{ formatAirport(airport) }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

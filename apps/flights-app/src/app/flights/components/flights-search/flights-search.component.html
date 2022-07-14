@@ -1,1 +1,15 @@
-<p>flights-search works!</p>
+<div class="origin-destination">
+  <app-location-input
+    [airports]="supportedAirports"
+    placeholder="From"
+    [control]="searchFormGroup.controls['origin']"
+  ></app-location-input>
+  <div class="swap-icon">
+    <fa-icon [icon]="faArrowRightArrowLeft" (click)="onSwap()"></fa-icon>
+  </div>
+  <app-location-input
+    [airports]="supportedAirports"
+    placeholder="To"
+    [control]="searchFormGroup.controls['destination']"
+  ></app-location-input>
+</div>

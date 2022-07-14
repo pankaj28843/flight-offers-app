@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+.origin-destination {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  justify-items: center;
+
+  .swap-icon {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: mat.get-color-from-palette(mat.$indigo-palette, 500);
+    border-radius: 50%;
+    padding: 5px;
+    margin: auto 10px;
+  }
+}
