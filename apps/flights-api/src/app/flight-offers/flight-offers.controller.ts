@@ -9,7 +9,7 @@ export class FlightOffersController {
   constructor(private readonly appService: FlightOffersService) {}
 
   @Get()
-  getData() {
-    return this.appService.getData();
+  searchFlights() {
+    return this.appService.searchFlights();
   }
 }
