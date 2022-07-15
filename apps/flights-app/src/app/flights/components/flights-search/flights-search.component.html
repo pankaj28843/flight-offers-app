@@ -29,7 +29,7 @@
     <button
       mat-raised-button
       color="primary"
-      type="submit"
+      (click)="onSearch()"
       [disabled]="!searchFormGroup.valid"
     >
       <fa-icon [icon]="faSearch"></fa-icon>

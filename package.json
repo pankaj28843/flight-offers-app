@@ -31,6 +31,7 @@
     "@nestjs/platform-express": "^8.0.0",
     "@nrwl/angular": "14.4.2",
     "amadeus": "^6.0.0",
+    "moment": "^2.29.4",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.4.0",
     "tslib": "^2.0.0",

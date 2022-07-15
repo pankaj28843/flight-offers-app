@@ -1,4 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
+
+import { FlightSearchInput } from '@app/shared-types';
 
 import { FlightOffersService } from './flight-offers.service';
 
@@ -8,8 +10,8 @@ import { FlightOffersService } from './flight-offers.service';
 export class FlightOffersController {
   constructor(private readonly appService: FlightOffersService) {}
 
-  @Get()
-  searchFlights() {
-    return this.appService.searchFlights();
+  @Post('')
+  searchFlights(@Body() searchRequest: FlightSearchInput) {
+    return this.appService.searchFlights(searchRequest);
   }
 }

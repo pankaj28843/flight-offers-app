@@ -3,43 +3,20 @@ import { Injectable } from '@nestjs/common';
 import {
   AmadeusFlightOffersRequest,
   AmadeusFlightOffersResponse,
+  FlightSearchInput,
 } from '@app/shared-types';
 
 import { amadeusClient } from './amadeus-client';
 
 @Injectable()
 export class FlightOffersService {
-  searchFlights(): Promise<AmadeusFlightOffersResponse> {
+  searchFlights(
+    input: FlightSearchInput
+  ): Promise<AmadeusFlightOffersResponse> {
     const requestDetails: AmadeusFlightOffersRequest = {
-      currencyCode: 'INR',
-      originDestinations: [
-        {
-          id: '1',
-          originLocationCode: 'DEL',
-          destinationLocationCode: 'CPH',
-          departureDateTimeRange: {
-            date: '2022-11-01',
-          },
-        },
-        {
-          id: '2',
-          originLocationCode: 'CPH',
-          destinationLocationCode: 'DEL',
-          departureDateTimeRange: {
-            date: '2022-11-05',
-          },
-        },
-      ],
-      travelers: [
-        {
-          id: '1',
-          travelerType: 'ADULT',
-        },
-        {
-          id: '2',
-          travelerType: 'CHILD',
-        },
-      ],
+      currencyCode: input.currencyCode,
+      originDestinations: input.originDestinations,
+      travelers: input.travelers,
       sources: ['GDS'],
       searchCriteria: {
         // maxFlightOffers: 2,

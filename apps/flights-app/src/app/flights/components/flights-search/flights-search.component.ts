@@ -6,6 +6,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 
+import { FlightsSearchService } from '../../services/flights-search.service';
 import { Airport, TravellerClass, TravellersCount } from '../../types';
 
 @Component({
@@ -63,6 +64,8 @@ export class FlightsSearchComponent implements OnInit, OnDestroy {
   });
   private subscription = new Subscription();
 
+  constructor(private flightsSearchService: FlightsSearchService) {}
+
   ngOnInit(): void {
     this.subscription.add(
       this.searchFormGroup.valueChanges.subscribe((value) => {
@@ -88,5 +91,32 @@ export class FlightsSearchComponent implements OnInit, OnDestroy {
       origin: destination,
       destination: origin,
     });
+  }
+
+  onSearch(): void {
+    if (!this.searchFormGroup.valid) {
+      return;
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const value = this.searchFormGroup.getRawValue()!;
+
+    this.flightsSearchService
+      .searchFlights(
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        value.origin!.code,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        value.destination!.code,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        value.departureDate!
+      )
+      .subscribe({
+        next: (data) => {
+          JSON.stringify(data);
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
   }
 }
