@@ -1,6 +1,6 @@
 export interface DepartureDateTimeRange {
   date: string;
-  time: string;
+  time?: string;
 }
 
 export interface OriginDestination {

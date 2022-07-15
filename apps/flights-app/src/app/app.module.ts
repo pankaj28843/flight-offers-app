@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Route, RouterModule } from '@angular/router';
@@ -22,6 +23,7 @@ const routes: Route[] = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     FontAwesomeModule,
+    MatNativeDateModule,
     FlightsModule,
   ],
   providers: [],

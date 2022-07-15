@@ -11,7 +11,8 @@ import { Airport } from '../../types';
 })
 export class LocationInputComponent implements OnInit, OnDestroy {
   @Input() airports: Airport[] = [];
-  @Input() placeholder = 'Enter a location';
+  @Input() label = 'Enter a location';
+  @Input() placeholder = '';
   @Input() control = new FormControl<Airport | null>(null);
 
   private subscription = new Subscription();

@@ -1,4 +1,3 @@
-@use 'sass:map';
 @use '@angular/material' as mat;
 
 .origin-destination {
@@ -12,7 +11,7 @@
   .swap-icon {
     cursor: pointer;
     font-size: 1.5rem;
-    color: #fff;
+    color: #ffffff;
     background-color: mat.get-color-from-palette(mat.$indigo-palette, 500);
     border-radius: 50%;
     padding: 5px;

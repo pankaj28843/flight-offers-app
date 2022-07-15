@@ -19,7 +19,6 @@ export class FlightOffersService {
           destinationLocationCode: 'CPH',
           departureDateTimeRange: {
             date: '2022-11-01',
-            time: '10:00:00',
           },
         },
         {
@@ -28,7 +27,6 @@ export class FlightOffersService {
           destinationLocationCode: 'DEL',
           departureDateTimeRange: {
             date: '2022-11-05',
-            time: '17:00:00',
           },
         },
       ],

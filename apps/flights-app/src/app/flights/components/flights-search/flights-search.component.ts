@@ -33,9 +33,12 @@ export class FlightsSearchComponent implements OnInit, OnDestroy {
     { code: 'HND', name: 'Tokyo' },
   ];
 
+  private readonly tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000);
   searchFormGroup = new FormGroup({
     origin: new FormControl<Airport | null>(null),
     destination: new FormControl<Airport | null>(null),
+    departureDate: new FormControl<Date | null>(this.tomorrow),
+    returnDate: new FormControl<Date | null>(null),
   });
 
   faArrowRightArrowLeft = faArrowRightArrowLeft;
@@ -63,6 +66,7 @@ export class FlightsSearchComponent implements OnInit, OnDestroy {
     const destination = this.searchFormGroup.controls['destination'].value;
 
     this.searchFormGroup.setValue({
+      ...this.searchFormGroup.getRawValue(),
       origin: destination,
       destination: origin,
     });

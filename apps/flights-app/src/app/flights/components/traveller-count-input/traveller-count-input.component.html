@@ -1,0 +1,27 @@
+<div class="input">
+  <div class="label-wrapper">
+    <div class="label">{{ label }}:</div>
+    <div>
+      <span class="help-text">{{ helpText }}</span>
+    </div>
+  </div>
+  <div class="input-controls">
+    <fa-icon
+      [icon]="faMinus"
+      class="icon"
+      [ngClass]="{
+        disabled: !canDecrease()
+      }"
+      (click)="decreaseCount()"
+    ></fa-icon>
+    {{ count }}
+    <fa-icon
+      [icon]="faPlus"
+      class="icon"
+      [ngClass]="{
+        disabled: !canIncrease()
+      }"
+      (click)="increaseCount()"
+    ></fa-icon>
+  </div>
+</div>

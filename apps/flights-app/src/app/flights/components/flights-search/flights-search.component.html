@@ -1,7 +1,7 @@
 <div class="origin-destination">
   <app-location-input
     [airports]="supportedAirports"
-    placeholder="From"
+    label="From"
     [control]="searchFormGroup.controls['origin']"
   ></app-location-input>
   <div class="swap-icon">
@@ -9,7 +9,17 @@
   </div>
   <app-location-input
     [airports]="supportedAirports"
-    placeholder="To"
+    label="To"
     [control]="searchFormGroup.controls['destination']"
   ></app-location-input>
+  <app-date-input
+    [control]="searchFormGroup.controls['departureDate']"
+    label="Departure Date"
+  ></app-date-input>
+  <app-date-input
+    [control]="searchFormGroup.controls['returnDate']"
+    [minDate]="searchFormGroup.controls['departureDate'].value"
+    label="Return Date"
+  ></app-date-input>
 </div>
+<app-traveller-input></app-traveller-input>

@@ -1,0 +1,24 @@
+<app-traveller-count-input
+  [count]="adultsCount"
+  label="Adults"
+  [minCount]="1"
+  [maxCount]="maxAllowedAdultsCount"
+  helpText="(12+ years)"
+  (countChange)="onAdultsCountChange($event)"
+></app-traveller-count-input>
+<app-traveller-count-input
+  [count]="childrenCount"
+  [minCount]="0"
+  [maxCount]="getMaxChildrenCount()"
+  label="Children"
+  helpText="(2-12 years)"
+  (countChange)="childrenCount = $event"
+></app-traveller-count-input>
+<app-traveller-count-input
+  [count]="infantsCount"
+  [minCount]="0"
+  [maxCount]="adultsCount"
+  label="Infants"
+  helpText="(below 2 years)"
+  (countChange)="infantsCount = $event"
+></app-traveller-count-input>
