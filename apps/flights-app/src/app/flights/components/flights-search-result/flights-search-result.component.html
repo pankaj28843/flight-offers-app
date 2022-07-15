@@ -1,0 +1,16 @@
+<ng-container *ngIf="!!searchResults">
+  <div *ngFor="let result of searchResults.data">
+    <div *ngFor="let itinerary of result.itineraries">
+      <p>Total Duration: {{ itinerary.duration }}</p>
+      <div *ngFor="let segment of itinerary.segments">
+        <img
+          src="/api/airline-details/{{ segment.carrierCode }}/logo"
+          keepaspectratio="true"
+          width="100"
+          height="100"
+        />
+      </div>
+      <hr />
+    </div>
+  </div>
+</ng-container>

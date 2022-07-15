@@ -14,13 +14,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { DateInputComponent } from './components/date-input/date-input.component';
 import { FlightsListComponent } from './components/flights-list/flights-list.component';
+import { FlightsSearchResultComponent } from './components/flights-search-result/flights-search-result.component';
 import { FlightsSearchComponent } from './components/flights-search/flights-search.component';
 import { LocationInputComponent } from './components/location-input/location-input.component';
 import { TravellerClassInputComponent } from './components/traveller-class-input/traveller-class-input.component';
 import { TravellerCountInputComponent } from './components/traveller-count-input/traveller-count-input.component';
 import { TravellerInputComponent } from './components/traveller-input/traveller-input.component';
+import { FlightsSearchPageComponent } from './pages/flights-search-page/flights-search-page.component';
 
-const routes: Route[] = [{ path: '', component: FlightsSearchComponent }];
+const routes: Route[] = [{ path: '', component: FlightsSearchPageComponent }];
 
 @NgModule({
   imports: [
@@ -45,6 +47,8 @@ const routes: Route[] = [{ path: '', component: FlightsSearchComponent }];
     TravellerInputComponent,
     TravellerCountInputComponent,
     TravellerClassInputComponent,
+    FlightsSearchResultComponent,
+    FlightsSearchPageComponent,
   ],
 })
 export class FlightsModule {}

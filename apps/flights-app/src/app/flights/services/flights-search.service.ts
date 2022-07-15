@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import {
   AmadeusFlightOffersResponse,
-  FlightSearchInput,
+  FlightsSearchRequestBody,
   OriginDestination,
   Traveler,
 } from '@app/shared-types';
@@ -41,7 +41,7 @@ export class FlightsSearchService {
         travelerType: 'CHILD',
       },
     ];
-    const requestBody: FlightSearchInput = {
+    const requestBody: FlightsSearchRequestBody = {
       currencyCode: 'DKK',
       originDestinations,
       travelers,

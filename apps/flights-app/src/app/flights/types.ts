@@ -15,3 +15,12 @@ export interface TravellersCount {
   children: number;
   infants: number;
 }
+
+export interface FlightSearchInput {
+  origin: Airport;
+  destination: Airport;
+  departureDate: Date;
+  returnDate?: Date;
+  travellersCount: TravellersCount;
+  travellerClass: TravellerClass;
+}

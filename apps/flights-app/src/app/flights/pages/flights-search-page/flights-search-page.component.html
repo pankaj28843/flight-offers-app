@@ -1,0 +1,6 @@
+<app-flights-search (search)="onSearch($event)"></app-flights-search>
+
+<app-flights-search-result
+  *ngIf="!!searchResults"
+  [searchResults]="searchResults"
+></app-flights-search-result>

@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import {
   AmadeusFlightOffersRequest,
   AmadeusFlightOffersResponse,
-  FlightSearchInput,
+  FlightsSearchRequestBody,
 } from '@app/shared-types';
 
 import { amadeusClient } from './amadeus-client';
@@ -11,7 +11,7 @@ import { amadeusClient } from './amadeus-client';
 @Injectable()
 export class FlightOffersService {
   searchFlights(
-    input: FlightSearchInput
+    input: FlightsSearchRequestBody
   ): Promise<AmadeusFlightOffersResponse> {
     const requestDetails: AmadeusFlightOffersRequest = {
       currencyCode: input.currencyCode,
