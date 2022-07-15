@@ -1,9 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { faArrowRightArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  faArrowRightArrowLeft,
+  faSearch,
+} from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 
-import { Airport } from '../../types';
+import { Airport, TravellerClass, TravellersCount } from '../../types';
 
 @Component({
   selector: 'app-flights-search',
@@ -11,7 +14,7 @@ import { Airport } from '../../types';
   styleUrls: ['./flights-search.component.scss'],
 })
 export class FlightsSearchComponent implements OnInit, OnDestroy {
-  public supportedAirports: { code: string; name: string }[] = [
+  supportedAirports: { code: string; name: string }[] = [
     { code: 'SFO', name: 'San Francisco' },
     { code: 'LAX', name: 'Los Angeles' },
     { code: 'JFK', name: 'New York' },
@@ -32,17 +35,32 @@ export class FlightsSearchComponent implements OnInit, OnDestroy {
     { code: 'SZX', name: 'Shenzhen' },
     { code: 'HND', name: 'Tokyo' },
   ];
+  faArrowRightArrowLeft = faArrowRightArrowLeft;
+  faSearch = faSearch;
 
   private readonly tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000);
   searchFormGroup = new FormGroup({
-    origin: new FormControl<Airport | null>(null),
-    destination: new FormControl<Airport | null>(null),
-    departureDate: new FormControl<Date | null>(this.tomorrow),
-    returnDate: new FormControl<Date | null>(null),
+    origin: new FormControl<Airport | null>(null, {
+      validators: [Validators.required],
+    }),
+    destination: new FormControl<Airport | null>(null, {
+      validators: [Validators.required],
+    }),
+    departureDate: new FormControl<Date | null>(this.tomorrow, {
+      validators: [Validators.required],
+    }),
+    returnDate: new FormControl<Date | null>(null, {
+      validators: [],
+    }),
+    travellersCount: new FormControl<TravellersCount>({
+      adults: 1,
+      children: 0,
+      infants: 0,
+    }),
+    travellerClass: new FormControl<TravellerClass>(TravellerClass.Economy, {
+      validators: [Validators.required],
+    }),
   });
-
-  faArrowRightArrowLeft = faArrowRightArrowLeft;
-
   private subscription = new Subscription();
 
   ngOnInit(): void {

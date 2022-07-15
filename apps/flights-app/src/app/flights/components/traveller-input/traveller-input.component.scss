@@ -1,48 +1,24 @@
-@use '@angular/material' as mat;
-
-.input {
-  display: flex;
-  flex-direction: row;
-
-  margin-bottom: 5px;
+:host {
+  margin-right: 5px;
+  height: 100%;
 }
 
-.label-wrapper {
+.input-trigger {
   display: flex;
-  flex-direction: column;
-  line-height: 1rem;
-  width: 75px;
-
-  .label {
-    height: 1.5rem;
-    display: flex;
-    align-items: center;
-  }
-
-  .help-text {
-    font-size: 0.6rem;
-    height: 0.6rem;
-    color: grey;
-  }
-}
-
-.input-controls {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+  font-size: 1rem;
+  justify-content: center;
   align-self: baseline;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.04);
+  padding: 0.75em;
+  padding-bottom: 1em;
+}
 
-  .icon {
-    background-color: mat.get-color-from-palette(mat.$indigo-palette, 500);
-    cursor: pointer;
-    color: #ffffff;
-    border-radius: 50%;
-    margin: 0 5px;
-    width: 1.5rem;
-    height: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.angle-down {
+  margin-left: 5px;
+}
+
+.traveller-input-overlay {
+  padding: 10px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
 }

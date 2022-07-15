@@ -1,6 +1,7 @@
 @use '@angular/material' as mat;
 
-.origin-destination {
+.inputs-container {
+  height: 60px;
   width: fit-content;
   display: flex;
   flex-direction: row;
@@ -15,6 +16,12 @@
     background-color: mat.get-color-from-palette(mat.$indigo-palette, 500);
     border-radius: 50%;
     padding: 5px;
-    margin: auto 10px;
+    margin-right: 5px;
   }
+}
+
+.search-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

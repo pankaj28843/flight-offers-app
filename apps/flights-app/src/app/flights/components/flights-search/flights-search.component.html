@@ -1,4 +1,4 @@
-<div class="origin-destination">
+<div class="inputs-container">
   <app-location-input
     [airports]="supportedAirports"
     label="From"
@@ -21,5 +21,19 @@
     [minDate]="searchFormGroup.controls['departureDate'].value"
     label="Return Date"
   ></app-date-input>
+  <app-traveller-input></app-traveller-input>
+  <app-traveller-class-input
+    [control]="searchFormGroup.controls['travellerClass']"
+  ></app-traveller-class-input>
+  <div class="search-button">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!searchFormGroup.valid"
+    >
+      <fa-icon [icon]="faSearch"></fa-icon>
+      Search
+    </button>
+  </div>
 </div>
-<app-traveller-input></app-traveller-input>

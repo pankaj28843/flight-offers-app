@@ -1,4 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+
+import { TravellersCount } from '../../types';
 
 @Component({
   selector: 'app-traveller-input',
@@ -6,43 +10,60 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./traveller-input.component.scss'],
 })
 export class TravellerInputComponent {
-  @Input() adultsCount = 1;
-  @Input() childrenCount = 0;
-  @Input() infantsCount = 0;
-  @Output() countChange = new EventEmitter<{
-    adults: number;
-    children: number;
-    infants: number;
-  }>();
+  @Input() control = new FormControl<TravellersCount>({
+    adults: 1,
+    children: 0,
+    infants: 0,
+  });
 
   readonly maxAllowedAdultsCount = 9;
   readonly maxAllowedTotalCount = 18;
 
+  isOpen = false;
+  faAngleDown = faAngleDown;
+  travellersCount = this.getCurrentValue();
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
   getMaxChildrenCount(): number {
-    return this.maxAllowedTotalCount - this.adultsCount - this.infantsCount;
+    const currentValue = this.getCurrentValue();
+    return (
+      this.maxAllowedTotalCount - currentValue.adults - currentValue.infants
+    );
   }
 
   onAdultsCountChange(count: number): void {
-    this.adultsCount = count;
-    this.infantsCount = Math.min(this.infantsCount, this.adultsCount);
-    this.emitValueChange();
+    const previousValue = this.getCurrentValue();
+    this.control.setValue({
+      ...previousValue,
+      adults: count,
+      infants: Math.min(previousValue.infants, count),
+    });
+    this.updateTravellersCount();
   }
 
   onChildrenCountChange(count: number): void {
-    this.childrenCount = count;
-    this.emitValueChange();
+    this.control.setValue({
+      ...this.getCurrentValue(),
+      children: count,
+    });
+    this.updateTravellersCount();
   }
 
   onInfantsCountChange(count: number): void {
-    this.infantsCount = count;
-    this.emitValueChange();
+    this.control.setValue({
+      ...this.getCurrentValue(),
+      infants: count,
+    });
+    this.updateTravellersCount();
   }
 
-  private emitValueChange(): void {
-    this.countChange.emit({
-      adults: this.adultsCount,
-      children: this.childrenCount,
-      infants: this.infantsCount,
-    });
+  getCurrentValue(): TravellersCount {
+    return this.control.getRawValue() as TravellersCount;
+  }
+
+  updateTravellersCount(): void {
+    this.travellersCount = this.getCurrentValue();
+    this.cdr.markForCheck();
   }
 }
