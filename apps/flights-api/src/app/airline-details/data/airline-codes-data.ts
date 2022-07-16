@@ -5280,4 +5280,11 @@ export const AIRLINE_CODES_DATA: { [iataCode: string]: AirlineDetails } = {
     callsign: 'RussianConnecty',
     country: 'Russia',
   },
+  UK: {
+    name: 'Vistara',
+    iata: 'UK',
+    icao: 'VTI',
+    callsign: 'VISTARA',
+    country: 'India',
+  },
 };

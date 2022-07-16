@@ -28,6 +28,8 @@ export class FlightsSearchComponent implements OnInit, OnDestroy {
   @Output() search = new EventEmitter<FlightSearchInput>();
 
   supportedAirports: { code: string; name: string }[] = [
+    { code: 'CPH', name: 'Copenhagen' },
+    { code: 'DEL', name: 'Delhi' },
     { code: 'SFO', name: 'San Francisco' },
     { code: 'LAX', name: 'Los Angeles' },
     { code: 'JFK', name: 'New York' },
@@ -39,7 +41,6 @@ export class FlightsSearchComponent implements OnInit, OnDestroy {
     { code: 'PEK', name: 'Beijing' },
     { code: 'ICN', name: 'Seoul' },
     { code: 'FRA', name: 'Frankfurt' },
-    { code: 'DEL', name: 'Delhi' },
     { code: 'BOM', name: 'Mumbai' },
     { code: 'BKK', name: 'Bangkok' },
     { code: 'KUL', name: 'Kuala Lumpur' },
