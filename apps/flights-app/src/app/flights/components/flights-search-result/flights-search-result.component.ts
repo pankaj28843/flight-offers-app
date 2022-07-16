@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { AmadeusFlightOffersResponse } from '@app/shared-types';
+import { AmadeusFlightOffersResponse } from '@app/shared';
 
 @Component({
   selector: 'app-flights-search-result',

@@ -5,6 +5,6 @@
     "flights-api": "apps/flights-api",
     "flights-app": "apps/flights-app",
     "flights-e2e": "apps/flights-e2e",
-    "shared-types": "libs/shared-types"
+    "shared": "libs/shared"
   }
 }

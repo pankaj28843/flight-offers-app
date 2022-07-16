@@ -8,7 +8,7 @@ import {
   FlightsSearchRequestBody,
   OriginDestination,
   Traveler,
-} from '@app/shared-types';
+} from '@app/shared';
 
 @Injectable({
   providedIn: 'root',

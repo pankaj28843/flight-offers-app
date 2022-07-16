@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/flights-app",
         "index": "apps/flights-app/src/index.html",
@@ -89,9 +87,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/flights-app"
-      ],
+      "outputs": ["coverage/apps/flights-app"],
       "options": {
         "jestConfig": "apps/flights-app/jest.config.ts",
         "passWithNoTests": true

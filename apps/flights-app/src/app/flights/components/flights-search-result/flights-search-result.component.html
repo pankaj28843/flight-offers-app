@@ -1,7 +1,14 @@
 <ng-container *ngIf="!!searchResults">
   <div *ngFor="let result of searchResults.data">
     <div *ngFor="let itinerary of result.itineraries">
-      <p>Total Duration: {{ itinerary.duration }}</p>
+      <ng-container
+        *ngIf="itinerary.duration | parseAmadeusFlightDuration as duration"
+      >
+        <p>
+          Total Duration: {{ duration.hours }} hours
+          {{ duration.minutes }} minutes
+        </p>
+      </ng-container>
       <div *ngFor="let segment of itinerary.segments">
         <img
           src="/api/airline-details/{{ segment.carrierCode }}/logo"

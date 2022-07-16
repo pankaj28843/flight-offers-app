@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 
-import { FlightsSearchRequestBody } from '@app/shared-types';
+import { FlightsSearchRequestBody } from '@app/shared';
 
 import { FlightOffersService } from './flight-offers.service';
 

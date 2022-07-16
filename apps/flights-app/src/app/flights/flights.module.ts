@@ -21,6 +21,7 @@ import { TravellerClassInputComponent } from './components/traveller-class-input
 import { TravellerCountInputComponent } from './components/traveller-count-input/traveller-count-input.component';
 import { TravellerInputComponent } from './components/traveller-input/traveller-input.component';
 import { FlightsSearchPageComponent } from './pages/flights-search-page/flights-search-page.component';
+import { ParseAmadeusFlightDurationPipe } from './pipes/parse-amadeus-flight-duration.pipe';
 
 const routes: Route[] = [{ path: '', component: FlightsSearchPageComponent }];
 
@@ -49,6 +50,7 @@ const routes: Route[] = [{ path: '', component: FlightsSearchPageComponent }];
     TravellerClassInputComponent,
     FlightsSearchResultComponent,
     FlightsSearchPageComponent,
+    ParseAmadeusFlightDurationPipe,
   ],
 })
 export class FlightsModule {}

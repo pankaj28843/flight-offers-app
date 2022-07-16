@@ -4,7 +4,7 @@ import {
   AmadeusFlightOffersRequest,
   AmadeusFlightOffersResponse,
   FlightsSearchRequestBody,
-} from '@app/shared-types';
+} from '@app/shared';
 
 import { amadeusClient } from './amadeus-client';
 

@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
-import { AmadeusFlightOffersResponse } from '@app/shared-types';
+import { AmadeusFlightOffersResponse } from '@app/shared';
 
 import { FlightsSearchService } from '../../services';
 import { FlightSearchInput } from '../../types';
