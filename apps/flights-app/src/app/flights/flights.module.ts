@@ -6,6 +6,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatOptionModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -13,6 +14,7 @@ import { Route, RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { DateInputComponent } from './components/date-input/date-input.component';
+import { FlightOfferSummaryComponent } from './components/flight-offer-summary/flight-offer-summary.component';
 import { FlightsListComponent } from './components/flights-list/flights-list.component';
 import { FlightsSearchResultComponent } from './components/flights-search-result/flights-search-result.component';
 import { FlightsSearchComponent } from './components/flights-search/flights-search.component';
@@ -30,6 +32,7 @@ const routes: Route[] = [{ path: '', component: FlightsSearchPageComponent }];
     RouterModule.forChild(routes),
     CommonModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
     OverlayModule,
     MatFormFieldModule,
     MatInputModule,
@@ -38,7 +41,7 @@ const routes: Route[] = [{ path: '', component: FlightsSearchPageComponent }];
     MatOptionModule,
     MatDatepickerModule,
     MatButtonModule,
-    FontAwesomeModule,
+    MatDividerModule,
   ],
   declarations: [
     FlightsSearchComponent,
@@ -51,6 +54,7 @@ const routes: Route[] = [{ path: '', component: FlightsSearchPageComponent }];
     FlightsSearchResultComponent,
     FlightsSearchPageComponent,
     ParseAmadeusFlightDurationPipe,
+    FlightOfferSummaryComponent,
   ],
 })
 export class FlightsModule {}

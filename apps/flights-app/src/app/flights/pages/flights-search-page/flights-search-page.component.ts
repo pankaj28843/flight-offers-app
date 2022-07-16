@@ -7,7 +7,7 @@ import { FlightSearchInput } from '../../types';
 
 @Component({
   templateUrl: './flights-search-page.component.html',
-  styleUrls: ['./flights-search-page.component.css'],
+  styleUrls: ['./flights-search-page.component.scss'],
 })
 export class FlightsSearchPageComponent implements OnInit {
   searchResults?: AmadeusFlightOffersResponse;

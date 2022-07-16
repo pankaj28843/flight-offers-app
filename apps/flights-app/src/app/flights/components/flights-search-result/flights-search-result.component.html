@@ -1,21 +1,9 @@
 <ng-container *ngIf="!!searchResults">
-  <div *ngFor="let result of searchResults.data">
-    <div *ngFor="let itinerary of result.itineraries">
-      <ng-container
-        *ngIf="itinerary.duration | parseAmadeusFlightDuration as duration"
-      >
-        <p>
-          Total Duration: {{ duration.hours }} hours
-          {{ duration.minutes }} minutes
-        </p>
-      </ng-container>
-      <div *ngFor="let segment of itinerary.segments">
-        <img
-          src="/api/airline-details/{{ segment.carrierCode }}/logo"
-          style="max-width: 100px; max-height: 100px"
-        />
-      </div>
-      <hr />
-    </div>
+  <div *ngFor="let flightOffer of searchResults.data">
+    <app-flight-offer-summary
+      [flightOffer]="flightOffer"
+      [amadeusDictionaries]="searchResults.dictionaries"
+    ></app-flight-offer-summary>
+    <mat-divider> </mat-divider>
   </div>
 </ng-container>

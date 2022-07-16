@@ -1,0 +1,17 @@
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .search-input {
+    flex-shrink: 1;
+  }
+
+  .search-results {
+    flex-grow: 1;
+    overflow: auto;
+  }
+}

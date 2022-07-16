@@ -1,6 +1,9 @@
-<app-flights-search (search)="onSearch($event)"></app-flights-search>
-
+<app-flights-search
+  class="search-input"
+  (search)="onSearch($event)"
+></app-flights-search>
 <app-flights-search-result
+  class="search-results"
   *ngIf="!!searchResults"
   [searchResults]="searchResults"
 ></app-flights-search-result>
