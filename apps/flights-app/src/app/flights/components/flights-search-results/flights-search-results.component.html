@@ -7,3 +7,9 @@
     <mat-divider> </mat-divider>
   </div>
 </ng-container>
+<div
+  class="empty-search-results"
+  *ngIf="!!searchResults && !searchResults.data.length"
+>
+  <p>No results found, please try searching for something else.</p>
+</div>

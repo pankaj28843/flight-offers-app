@@ -22,7 +22,6 @@ export class FlightsSearchService {
   searchFlights(
     searchInput: FlightSearchInput
   ): Observable<AmadeusFlightOffersResponse> {
-    console.log(JSON.stringify(searchInput, null, 2));
     const originDestinations = this.buildOriginDestinations(searchInput);
     const travelers = this.buildTravelersList(searchInput.travellersCount);
     const cabinRestrictions = this.buildCabinRestrictions(

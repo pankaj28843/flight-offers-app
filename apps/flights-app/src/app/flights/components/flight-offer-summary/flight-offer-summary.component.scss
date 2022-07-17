@@ -92,9 +92,10 @@
 }
 
 .price-details {
-  width: 200px;
+  width: 100%;
   font-size: 1.2rem;
   display: flex;
-  align-self: center;
-  justify-content: center;
+  flex-direction: row;
+  align-self: flex-end;
+  justify-content: flex-end;
 }

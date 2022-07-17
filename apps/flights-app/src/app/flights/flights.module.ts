@@ -10,6 +10,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { Route, RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -17,8 +18,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DateInputComponent } from './components/date-input/date-input.component';
 import { FlightOfferSummaryComponent } from './components/flight-offer-summary/flight-offer-summary.component';
 import { FlightsListComponent } from './components/flights-list/flights-list.component';
-import { FlightsSearchResultComponent } from './components/flights-search-result/flights-search-result.component';
-import { FlightsSearchComponent } from './components/flights-search/flights-search.component';
+import { FlightsSearchInputComponent } from './components/flights-search-input/flights-search-input.component';
+import { FlightsSearchResultsComponent } from './components/flights-search-results/flights-search-results.component';
 import { LocationInputComponent } from './components/location-input/location-input.component';
 import { TravellerClassInputComponent } from './components/traveller-class-input/traveller-class-input.component';
 import { TravellerCountInputComponent } from './components/traveller-count-input/traveller-count-input.component';
@@ -44,16 +45,17 @@ const routes: Route[] = [{ path: '', component: FlightsSearchPageComponent }];
     MatButtonModule,
     MatDividerModule,
     MatCardModule,
+    MatProgressBarModule,
   ],
   declarations: [
-    FlightsSearchComponent,
+    FlightsSearchInputComponent,
     FlightsListComponent,
     LocationInputComponent,
     DateInputComponent,
     TravellerInputComponent,
     TravellerCountInputComponent,
     TravellerClassInputComponent,
-    FlightsSearchResultComponent,
+    FlightsSearchResultsComponent,
     FlightsSearchPageComponent,
     ParseAmadeusFlightDurationPipe,
     FlightOfferSummaryComponent,

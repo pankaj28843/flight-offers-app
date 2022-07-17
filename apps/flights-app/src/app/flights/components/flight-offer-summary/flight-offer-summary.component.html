@@ -2,95 +2,107 @@
   class="flight-offer-container"
   *ngIf="!!flightOffer && !!amadeusDictionaries"
 >
-  <mat-card
-    *ngFor="
-      let itinerary of flightOffer.itineraries;
-      let isLastItinerary = last
-    "
-  >
-    <mat-card-header>
-      <mat-card-subtitle
-        *ngIf="itinerary.duration | parseAmadeusFlightDuration as duration"
-        >Total Duration: {{ duration.hours }} hrs
-        {{ duration.minutes }} mins</mat-card-subtitle
-      >
-    </mat-card-header>
-    <mat-card-content>
-      <div class="itinerary-summary">
-        <div class="segments-container">
-          <div
-            class="segment-summary"
-            *ngFor="let segment of itinerary.segments; let isLastSegment = last"
-          >
-            <div class="airline-container">
-              <img
-                class="airline-logo"
-                src="/api/airline-details/{{ segment.carrierCode }}/logo"
-              />
-              <div class="airline-details">
-                <div class="airline-name">
-                  {{ amadeusDictionaries.carriers[segment.carrierCode] }}
+  <div>
+    <mat-card
+      *ngFor="
+        let itinerary of flightOffer.itineraries;
+        let isLastItinerary = last
+      "
+    >
+      <mat-card-header>
+        <mat-card-subtitle
+          *ngIf="itinerary.duration | parseAmadeusFlightDuration as duration"
+          >Total Duration: {{ duration.hours }} hrs
+          {{ duration.minutes }} mins</mat-card-subtitle
+        >
+      </mat-card-header>
+      <mat-card-content>
+        <div class="itinerary-summary">
+          <div class="segments-container">
+            <div
+              class="segment-summary"
+              *ngFor="
+                let segment of itinerary.segments;
+                let isLastSegment = last
+              "
+            >
+              <div class="airline-container">
+                <img
+                  class="airline-logo"
+                  src="/api/airline-details/{{ segment.carrierCode }}/logo"
+                />
+                <div class="airline-details">
+                  <div class="airline-name">
+                    {{ amadeusDictionaries.carriers[segment.carrierCode] }}
+                  </div>
+                  <div class="airline-code">({{ segment.carrierCode }})</div>
                 </div>
-                <div class="airline-code">({{ segment.carrierCode }})</div>
               </div>
+              <div class="segment-details">
+                <div>
+                  <div class="arrival-time">
+                    {{ segment.departure.at | date: 'HH:mm' }}
+                  </div>
+                  <div class="airport-details">
+                    <div class="airport-code">
+                      {{ segment.departure.iataCode }}
+                    </div>
+                    <div
+                      class="airport-terminal"
+                      *ngIf="segment.departure.terminal"
+                    >
+                      Terminal {{ segment.departure.terminal }}
+                    </div>
+                  </div>
+                  <div class="arrival-date">
+                    {{ segment.departure.at | date: 'E, dd-MMM-YYYY' }}
+                  </div>
+                </div>
+                <ng-container
+                  *ngIf="
+                    segment.duration
+                      | parseAmadeusFlightDuration as segmentDuration
+                  "
+                >
+                  <div class="segment-duration">
+                    {{ segmentDuration.hours }} hrs
+                    {{ segmentDuration.minutes }} mins
+                  </div>
+                </ng-container>
+                <div>
+                  <div class="arrival-time">
+                    {{ segment.arrival.at | date: 'HH:mm' }}
+                  </div>
+                  <div class="airport-details">
+                    <div class="airport-code">
+                      {{ segment.arrival.iataCode }}
+                    </div>
+                    <div
+                      class="airport-terminal"
+                      *ngIf="segment.arrival.terminal"
+                    >
+                      Terminal {{ segment.arrival.terminal }}
+                    </div>
+                  </div>
+                  <div class="arrival-date">
+                    {{ segment.arrival.at | date: 'E, dd-MMM-YYYY' }}
+                  </div>
+                </div>
+              </div>
+              <mat-divider *ngIf="!isLastSegment"></mat-divider>
             </div>
-            <div class="segment-details">
-              <div>
-                <div class="arrival-time">
-                  {{ segment.departure.at | date: 'HH:mm' }}
-                </div>
-                <div class="airport-details">
-                  <div class="airport-code">
-                    {{ segment.departure.iataCode }}
-                  </div>
-                  <div
-                    class="airport-terminal"
-                    *ngIf="segment.departure.terminal"
-                  >
-                    Terminal {{ segment.departure.terminal }}
-                  </div>
-                </div>
-                <div class="arrival-date">
-                  {{ segment.departure.at | date: 'E, dd-MMM-YYYY' }}
-                </div>
-              </div>
-              <ng-container
-                *ngIf="
-                  segment.duration
-                    | parseAmadeusFlightDuration as segmentDuration
-                "
-              >
-                <div class="segment-duration">
-                  {{ segmentDuration.hours }} hrs
-                  {{ segmentDuration.minutes }} mins
-                </div>
-              </ng-container>
-              <div>
-                <div class="arrival-time">
-                  {{ segment.arrival.at | date: 'HH:mm' }}
-                </div>
-                <div class="airport-details">
-                  <div class="airport-code">
-                    {{ segment.arrival.iataCode }}
-                  </div>
-                  <div
-                    class="airport-terminal"
-                    *ngIf="segment.arrival.terminal"
-                  >
-                    Terminal {{ segment.arrival.terminal }}
-                  </div>
-                </div>
-                <div class="arrival-date">
-                  {{ segment.arrival.at | date: 'E, dd-MMM-YYYY' }}
-                </div>
-              </div>
-            </div>
-            <mat-divider *ngIf="!isLastSegment"></mat-divider>
           </div>
         </div>
-        <div class="price-details">
-          {{ flightOffer.price.currency }} {{ flightOffer.price.grandTotal }}
-        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <mat-card>
+    <mat-card-content>
+      <div class="price-details">
+        Total price:
+        {{
+          flightOffer.price.grandTotal | currency: flightOffer.price.currency
+        }}
       </div>
     </mat-card-content>
   </mat-card>

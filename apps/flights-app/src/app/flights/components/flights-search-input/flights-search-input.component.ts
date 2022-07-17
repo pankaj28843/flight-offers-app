@@ -1,27 +1,20 @@
-import {
-  Component,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   faArrowRightArrowLeft,
   faSearch,
 } from '@fortawesome/free-solid-svg-icons';
-import { Subscription } from 'rxjs';
 
 import { CabinType } from '@app/shared';
 
 import { Airport, FlightSearchInput, TravellersCount } from '../../types';
 
 @Component({
-  selector: 'app-flights-search',
-  templateUrl: './flights-search.component.html',
-  styleUrls: ['./flights-search.component.scss'],
+  selector: 'app-flights-search-input',
+  templateUrl: './flights-search-input.component.html',
+  styleUrls: ['./flights-search-input.component.scss'],
 })
-export class FlightsSearchComponent implements OnInit, OnDestroy {
+export class FlightsSearchInputComponent {
   @Output() search = new EventEmitter<FlightSearchInput>();
 
   supportedAirports: { code: string; name: string }[] = [
@@ -72,19 +65,6 @@ export class FlightsSearchComponent implements OnInit, OnDestroy {
       validators: [Validators.required],
     }),
   });
-  private subscription = new Subscription();
-
-  ngOnInit(): void {
-    this.subscription.add(
-      this.searchFormGroup.valueChanges.subscribe((value) => {
-        console.log(JSON.stringify(value, null, 2));
-      })
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
 
   formatAirport(airport?: { code: string; name: string }): string {
     return airport ? `${airport.name} (${airport.code})` : '';
@@ -107,8 +87,6 @@ export class FlightsSearchComponent implements OnInit, OnDestroy {
     }
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const value = this.searchFormGroup.getRawValue();
-
-    console.log(value.travellersCount);
 
     this.search.emit({
       origin: value.origin as Airport,

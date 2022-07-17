@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { AmadeusDictionaries, FlightOffer } from '@app/shared';
 
@@ -7,8 +7,7 @@ import { AmadeusDictionaries, FlightOffer } from '@app/shared';
   templateUrl: './flight-offer-summary.component.html',
   styleUrls: ['./flight-offer-summary.component.scss'],
 })
-export class FlightOfferSummaryComponent implements OnInit {
+export class FlightOfferSummaryComponent {
   @Input() flightOffer?: FlightOffer;
   @Input() amadeusDictionaries?: AmadeusDictionaries;
-  ngOnInit(): void {}
 }

@@ -1,9 +1,16 @@
-<app-flights-search
+<app-flights-search-input
   class="search-input"
   (search)="onSearch($event)"
-></app-flights-search>
-<app-flights-search-result
+></app-flights-search-input>
+<div class="progress-bar-container">
+  <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+</div>
+<app-flights-search-results
   class="search-results"
+  [ngClass]="{ blur: isLoading }"
   *ngIf="!!searchResults"
   [searchResults]="searchResults"
-></app-flights-search-result>
+></app-flights-search-results>
+<div class="error-message" *ngIf="hasError">
+  <p>Something went wrong, please try again.</p>
+</div>

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 
 import { AmadeusFlightOffersResponse } from '@app/shared';
 
@@ -9,30 +9,34 @@ import { FlightSearchInput } from '../../types';
   templateUrl: './flights-search-page.component.html',
   styleUrls: ['./flights-search-page.component.scss'],
 })
-export class FlightsSearchPageComponent implements OnInit {
+export class FlightsSearchPageComponent {
   searchResults?: AmadeusFlightOffersResponse;
+  isLoading = false;
+  hasError = false;
 
   constructor(
     private cdr: ChangeDetectorRef,
     private flightsSearchService: FlightsSearchService
   ) {}
 
-  ngOnInit(): void {}
-
   onSearch(searchInput: FlightSearchInput): void {
-    this.searchResults = undefined;
+    this.isLoading = true;
+    this.hasError = false;
     this.cdr.markForCheck();
 
-    this.flightsSearchService
-      .searchFlights(searchInput)
-      .subscribe({
-        next: (data) => {
-          this.searchResults = data;
-          this.cdr.markForCheck();
-        },
-        error: (error) => {
-          console.error(error);
-        },
-      });
+    this.flightsSearchService.searchFlights(searchInput).subscribe({
+      next: (data) => {
+        this.searchResults = data;
+        this.isLoading = false;
+        this.cdr.markForCheck();
+      },
+      error: (error) => {
+        this.searchResults = undefined;
+        this.hasError = true;
+        this.isLoading = false;
+        this.cdr.markForCheck();
+        console.error(error);
+      },
+    });
   }
 }
