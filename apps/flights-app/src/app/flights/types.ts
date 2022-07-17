@@ -1,13 +1,8 @@
+import { CabinType } from '@app/shared';
+
 export interface Airport {
   code: string;
   name: string;
-}
-
-export enum TravellerClass {
-  Economy = 'Economy',
-  PremiumEconomy = 'Premium Economy',
-  Business = 'Business',
-  First = 'First',
 }
 
 export interface TravellersCount {
@@ -22,5 +17,5 @@ export interface FlightSearchInput {
   departureDate: Date;
   returnDate?: Date;
   travellersCount: TravellersCount;
-  travellerClass: TravellerClass;
+  travellerClass: CabinType;
 }

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-import { TravellerClass } from '../../types';
+import { CabinType } from '@app/shared';
 
 @Component({
   selector: 'app-traveller-class-input',
@@ -9,13 +9,13 @@ import { TravellerClass } from '../../types';
   styleUrls: ['./traveller-class-input.component.scss'],
 })
 export class TravellerClassInputComponent implements OnInit {
-  availableClasses = [
-    TravellerClass.Economy,
-    TravellerClass.PremiumEconomy,
-    TravellerClass.Business,
-    TravellerClass.First,
+  availableClasses: [CabinType, string][] = [
+    ['ECONOMY', 'Economy'],
+    ['PREMIUM_ECONOMY', 'Premium Economy'],
+    ['BUSINESS', 'Business'],
+    ['FIRST', 'First'],
   ];
-  @Input() control = new FormControl<TravellerClass>(TravellerClass.Economy);
+  @Input() control = new FormControl<CabinType>('ECONOMY');
 
   constructor() {}
 

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatOptionModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDividerModule } from '@angular/material/divider';
@@ -42,6 +43,7 @@ const routes: Route[] = [{ path: '', component: FlightsSearchPageComponent }];
     MatDatepickerModule,
     MatButtonModule,
     MatDividerModule,
+    MatCardModule,
   ],
   declarations: [
     FlightsSearchComponent,

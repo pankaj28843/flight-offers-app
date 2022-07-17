@@ -10,19 +10,35 @@ export interface OriginDestination {
   departureDateTimeRange: DepartureDateTimeRange;
 }
 
+export type TravelerType =
+  | 'ADULT'
+  | 'CHILD'
+  | 'SENIOR'
+  | 'YOUNG'
+  | 'HELD_INFANT'
+  | 'SEATED_INFANT'
+  | 'STUDENT';
+
 export interface Traveler {
   id: string;
-  travelerType: string;
+  travelerType: TravelerType;
+  associatedAdultId?: string;
 }
 
+export type CabinType = 'ECONOMY' | 'PREMIUM_ECONOMY' | 'BUSINESS' | 'FIRST';
+export type CabinRestrictionCoverage =
+  | 'MOST_SEGMENTS'
+  | 'AT_LEAST_ONE_SEGMENT'
+  | 'ALL_SEGMENTS';
 export interface CabinRestriction {
-  cabin: string;
-  coverage: string;
+  cabin: CabinType;
+  coverage: CabinRestrictionCoverage;
   originDestinationIds: string[];
 }
 
 export interface CarrierRestrictions {
-  excludedCarrierCodes: string[];
+  excludedCarrierCodes?: string[];
+  includedCarrierCodes?: string[];
 }
 
 export interface FlightFilters {

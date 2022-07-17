@@ -5,8 +5,8 @@
     </mat-select-trigger>
     <mat-option
       *ngFor="let travellerClass of availableClasses"
-      [value]="travellerClass"
-      >{{ travellerClass }}</mat-option
+      [value]="travellerClass[0]"
+      >{{ travellerClass[1] }}</mat-option
     >
   </mat-select>
 </mat-form-field>

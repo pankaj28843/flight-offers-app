@@ -24,11 +24,7 @@ export class FlightsSearchPageComponent implements OnInit {
     this.cdr.markForCheck();
 
     this.flightsSearchService
-      .searchFlights(
-        searchInput.origin.code,
-        searchInput.destination.code,
-        searchInput.departureDate
-      )
+      .searchFlights(searchInput)
       .subscribe({
         next: (data) => {
           this.searchResults = data;

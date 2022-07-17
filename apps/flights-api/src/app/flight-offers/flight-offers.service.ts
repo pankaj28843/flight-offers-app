@@ -19,19 +19,13 @@ export class FlightOffersService {
       travelers: input.travelers,
       sources: ['GDS'],
       searchCriteria: {
-        // maxFlightOffers: 2,
-        // flightFilters: {
-        //   cabinRestrictions: [
-        //     {
-        //       cabin: 'BUSINESS',
-        //       coverage: 'MOST_SEGMENTS',
-        //       originDestinationIds: ['1'],
-        //     },
-        //   ],
-        //   carrierRestrictions: {
-        //     excludedCarrierCodes: [],
-        //   },
-        // },
+        flightFilters: {
+          cabinRestrictions: input.cabinRestrictions,
+          carrierRestrictions: {
+            excludedCarrierCodes: input.excludedCarrierCodes,
+            includedCarrierCodes: input.includedCarrierCodes,
+          },
+        },
       },
     };
     return amadeusClient.shopping.flightOffersSearch

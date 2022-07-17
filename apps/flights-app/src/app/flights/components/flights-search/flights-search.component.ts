@@ -12,12 +12,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 
-import {
-  Airport,
-  FlightSearchInput,
-  TravellerClass,
-  TravellersCount,
-} from '../../types';
+import { CabinType } from '@app/shared';
+
+import { Airport, FlightSearchInput, TravellersCount } from '../../types';
 
 @Component({
   selector: 'app-flights-search',
@@ -71,7 +68,7 @@ export class FlightsSearchComponent implements OnInit, OnDestroy {
       children: 0,
       infants: 0,
     }),
-    travellerClass: new FormControl<TravellerClass>(TravellerClass.Economy, {
+    travellerClass: new FormControl<CabinType>('ECONOMY', {
       validators: [Validators.required],
     }),
   });
@@ -111,13 +108,15 @@ export class FlightsSearchComponent implements OnInit, OnDestroy {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const value = this.searchFormGroup.getRawValue();
 
+    console.log(value.travellersCount);
+
     this.search.emit({
       origin: value.origin as Airport,
       destination: value.destination as Airport,
       departureDate: value.departureDate as Date,
       returnDate: value.returnDate || undefined,
       travellersCount: value.travellersCount as TravellersCount,
-      travellerClass: value.travellerClass as TravellerClass,
+      travellerClass: value.travellerClass as CabinType,
     });
   }
 }

@@ -21,7 +21,9 @@
     [minDate]="searchFormGroup.controls['departureDate'].value"
     label="Return Date"
   ></app-date-input>
-  <app-traveller-input></app-traveller-input>
+  <app-traveller-input
+    [control]="searchFormGroup.controls['travellersCount']"
+  ></app-traveller-input>
   <app-traveller-class-input
     [control]="searchFormGroup.controls['travellerClass']"
   ></app-traveller-class-input>
