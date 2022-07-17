@@ -12,6 +12,7 @@ This is a full-stack app built using Angular and NestJS. It uses the [Amadeus AP
 After installing the project dependecies using `npm install`, you can run following commands:
 
 ### Run development server
+
 ```bash
 npm run dev
 ```
@@ -21,3 +22,7 @@ Open [http://localhost:4200](http://localhost:4200) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+## Screenshots
+
+<img src="./screenshots/search-results-round-trip.png" width="100%">
