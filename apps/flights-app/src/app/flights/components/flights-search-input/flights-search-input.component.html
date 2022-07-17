@@ -1,6 +1,6 @@
 <div class="inputs-container">
   <app-location-input
-    [airports]="supportedAirports"
+    [airports]="ALL_AIRPORTS"
     label="From"
     [control]="searchFormGroup.controls['origin']"
   ></app-location-input>
@@ -8,7 +8,7 @@
     <fa-icon [icon]="faArrowRightArrowLeft" (click)="onSwap()"></fa-icon>
   </div>
   <app-location-input
-    [airports]="supportedAirports"
+    [airports]="validAirportsForDestination"
     label="To"
     [control]="searchFormGroup.controls['destination']"
   ></app-location-input>

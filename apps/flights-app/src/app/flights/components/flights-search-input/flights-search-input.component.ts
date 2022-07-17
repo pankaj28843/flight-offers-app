@@ -1,9 +1,17 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   faArrowRightArrowLeft,
   faSearch,
 } from '@fortawesome/free-solid-svg-icons';
+import { Subscription } from 'rxjs';
 
 import { CabinType } from '@app/shared';
 
@@ -14,10 +22,10 @@ import { Airport, FlightSearchInput, TravellersCount } from '../../types';
   templateUrl: './flights-search-input.component.html',
   styleUrls: ['./flights-search-input.component.scss'],
 })
-export class FlightsSearchInputComponent {
+export class FlightsSearchInputComponent implements OnInit, OnDestroy {
   @Output() search = new EventEmitter<FlightSearchInput>();
 
-  supportedAirports: { code: string; name: string }[] = [
+  ALL_AIRPORTS: Airport[] = [
     { code: 'CPH', name: 'Copenhagen' },
     { code: 'DEL', name: 'Delhi' },
     { code: 'SFO', name: 'San Francisco' },
@@ -39,15 +47,16 @@ export class FlightsSearchInputComponent {
     { code: 'SZX', name: 'Shenzhen' },
     { code: 'HND', name: 'Tokyo' },
   ];
+  validAirportsForDestination: Airport[] = this.ALL_AIRPORTS;
   faArrowRightArrowLeft = faArrowRightArrowLeft;
   faSearch = faSearch;
 
   private readonly tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000);
   searchFormGroup = new FormGroup({
-    origin: new FormControl<Airport>(this.supportedAirports[0], {
+    origin: new FormControl<Airport>(this.ALL_AIRPORTS[0], {
       validators: [Validators.required],
     }),
-    destination: new FormControl<Airport>(this.supportedAirports[1], {
+    destination: new FormControl<Airport>(this.ALL_AIRPORTS[1], {
       validators: [Validators.required],
     }),
     departureDate: new FormControl<Date>(this.tomorrow, {
@@ -65,6 +74,28 @@ export class FlightsSearchInputComponent {
       validators: [Validators.required],
     }),
   });
+
+  private subscription = new Subscription();
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngOnInit(): void {
+    this.subscription.add(
+      this.searchFormGroup.controls['origin'].valueChanges.subscribe(
+        (value) => {
+          if (value) {
+            this.limitAirportsForDestination(value);
+          }
+        }
+      )
+    );
+    this.searchFormGroup.controls['origin'].setValue(this.ALL_AIRPORTS[0]);
+    this.searchFormGroup.controls['destination'].setValue(this.ALL_AIRPORTS[1]);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   formatAirport(airport?: { code: string; name: string }): string {
     return airport ? `${airport.name} (${airport.code})` : '';
@@ -96,5 +127,12 @@ export class FlightsSearchInputComponent {
       travellersCount: value.travellersCount as TravellersCount,
       travellerClass: value.travellerClass as CabinType,
     });
+  }
+
+  limitAirportsForDestination(origin: Airport): void {
+    this.validAirportsForDestination = this.ALL_AIRPORTS.filter(
+      (airport) => airport.code !== origin.code
+    );
+    this.cdr.markForCheck();
   }
 }
